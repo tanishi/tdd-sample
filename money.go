@@ -10,6 +10,6 @@ func NewDollar(amount int) *Dollar {
 	}
 }
 
-func (d *Dollar) Times(multplier int) {
-	d.Amount *= multplier
+func (d *Dollar) Times(multplier int) *Dollar {
+	return NewDollar(d.Amount * multplier)
 }
