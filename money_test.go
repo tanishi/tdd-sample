@@ -2,7 +2,7 @@ package main
 
 import "testing"
 
-func TestHelloWorld(t *testing.T) {
+func TestMultiplication(t *testing.T) {
 	five := NewDollar(5)
 	product := five.Times(2)
 
