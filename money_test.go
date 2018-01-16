@@ -1,22 +1,23 @@
 package main
 
-import "testing"
+import (
+	"reflect"
+	"testing"
+)
 
 func TestMultiplication(t *testing.T) {
 	five := NewDollar(5)
-	product := five.Times(2)
 
-	expected := 10
+	expected := NewDollar(10)
 
-	if product.Amount != expected {
-		t.Errorf("expected: %v, but: %v", expected, product.Amount)
+	if !reflect.DeepEqual(five.Times(2), expected) {
+		t.Errorf("expected: %v, but: %v", expected, five.Times(2))
 	}
 
-	product = five.Times(3)
-	expected = 15
+	expected = NewDollar(15)
 
-	if product.Amount != expected {
-		t.Errorf("expected: %v, but: %v", expected, product.Amount)
+	if !reflect.DeepEqual(five.Times(3), expected) {
+		t.Errorf("expected: %v, but: %v", expected, five.Times(3))
 	}
 }
 
