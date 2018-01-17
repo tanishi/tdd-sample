@@ -1,12 +1,14 @@
 package main
 
 type Dollar struct {
-	amount int
+	*MoneyStruct
 }
 
 func NewDollar(amount int) *Dollar {
 	return &Dollar{
-		amount: amount,
+		&MoneyStruct{
+			amount: amount,
+		},
 	}
 }
 
