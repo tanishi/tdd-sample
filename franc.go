@@ -1,12 +1,14 @@
 package main
 
 type Franc struct {
-	amount int
+	*MoneyStruct
 }
 
 func NewFranc(amount int) *Franc {
 	return &Franc{
-		amount: amount,
+		&MoneyStruct{
+			amount: amount,
+		},
 	}
 }
 
