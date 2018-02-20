@@ -60,11 +60,11 @@ func TestFrancMultiplication(t *testing.T) {
 }
 
 func TestCurrency(t *testing.T) {
-	if "USD" != NewMoney(1, "USD").Currency() {
-		t.Errorf("expected: %v, but %v", "USD", NewMoney(1, "USD").Currency())
+	if "USD" != NewMoney(1, "USD").Currency {
+		t.Errorf("expected: %v, but %v", "USD", NewMoney(1, "USD").Currency)
 	}
 
-	if "CHF" != NewMoney(1, "CHF").Currency() {
-		t.Errorf("expected: %v, but %v", "CHF", NewMoney(1, "CHF").Currency())
+	if "CHF" != NewMoney(1, "CHF").Currency {
+		t.Errorf("expected: %v, but %v", "CHF", NewMoney(1, "CHF").Currency)
 	}
 }
