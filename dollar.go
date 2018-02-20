@@ -4,18 +4,15 @@ type Dollar struct {
 	*MoneyStruct
 }
 
-func NewDollar(amount int) Money {
+func NewDollar(amount int, currency string) Money {
 	return &Dollar{
 		&MoneyStruct{
-			amount: amount,
+			amount:   amount,
+			currency: currency,
 		},
 	}
 }
 
 func (d *Dollar) Times(multplier int) Money {
-	return NewDollar(d.amount * multplier)
-}
-
-func (d *Dollar) Currency() string {
-	return "USD"
+	return NewDollar(d.amount*multplier, "USD")
 }

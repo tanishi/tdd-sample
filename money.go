@@ -8,11 +8,16 @@ type Money interface {
 }
 
 type MoneyStruct struct {
-	amount int
+	amount   int
+	currency string
 }
 
 func (m *MoneyStruct) GetAmount() int {
 	return m.amount
+}
+
+func (m *MoneyStruct) Currency() string {
+	return m.currency
 }
 
 func (m *MoneyStruct) Equals(obj interface{}) bool {
