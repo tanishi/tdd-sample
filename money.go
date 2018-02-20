@@ -2,8 +2,8 @@ package main
 
 type Money interface {
 	Equals(obj interface{}) bool
-	GetAmount() int
 	Times(int) Money
+	Amount() int
 	Currency() string
 }
 
@@ -12,7 +12,7 @@ type MoneyStruct struct {
 	currency string
 }
 
-func (m *MoneyStruct) GetAmount() int {
+func (m *MoneyStruct) Amount() int {
 	return m.amount
 }
 
@@ -22,5 +22,5 @@ func (m *MoneyStruct) Currency() string {
 
 func (m *MoneyStruct) Equals(obj interface{}) bool {
 	money := obj.(Money)
-	return m.GetAmount() == money.GetAmount()
+	return m.Amount() == money.Amount()
 }
