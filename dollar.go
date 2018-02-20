@@ -4,7 +4,7 @@ type Dollar struct {
 	*MoneyStruct
 }
 
-func NewDollar(amount int) *Dollar {
+func NewDollar(amount int) Money {
 	return &Dollar{
 		&MoneyStruct{
 			amount: amount,
@@ -12,6 +12,6 @@ func NewDollar(amount int) *Dollar {
 	}
 }
 
-func (d *Dollar) Times(multplier int) *Dollar {
+func (d *Dollar) Times(multplier int) Money {
 	return NewDollar(d.amount * multplier)
 }

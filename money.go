@@ -3,6 +3,7 @@ package main
 type Money interface {
 	Equals(obj interface{}) bool
 	GetAmount() int
+	Times(int) Money
 }
 
 type MoneyStruct struct {
