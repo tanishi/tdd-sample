@@ -15,3 +15,7 @@ func NewDollar(amount int) Money {
 func (d *Dollar) Times(multplier int) Money {
 	return NewDollar(d.amount * multplier)
 }
+
+func (d *Dollar) Currency() string {
+	return "USD"
+}

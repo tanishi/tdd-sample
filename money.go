@@ -4,6 +4,7 @@ type Money interface {
 	Equals(obj interface{}) bool
 	GetAmount() int
 	Times(int) Money
+	Currency() string
 }
 
 type MoneyStruct struct {

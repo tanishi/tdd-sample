@@ -54,3 +54,13 @@ func TestFrancMultiplication(t *testing.T) {
 		t.Errorf("expected: %v, but: %v", expected, five.Times(3))
 	}
 }
+
+func TestCurrency(t *testing.T) {
+	if "USD" != NewDollar(1).Currency() {
+		t.Errorf("expected: %v, but %v", "USD", NewDollar(1).Currency())
+	}
+
+	if "CHF" != NewFranc(1).Currency() {
+		t.Errorf("expected: %v, but %v", "CHF", NewFranc(1).Currency())
+	}
+}
