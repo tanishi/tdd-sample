@@ -29,5 +29,9 @@ func (m *MoneyStruct) Currency() string {
 
 func (m *MoneyStruct) Equals(obj interface{}) bool {
 	money := obj.(Money)
-	return m.Amount() == money.Amount()
+	return m.Amount() == money.Amount() && m.Currency() == money.Currency()
+}
+
+func (m *MoneyStruct) Times(multplier int) Money {
+	return NewMoney(m.amount*multplier, m.Currency())
 }

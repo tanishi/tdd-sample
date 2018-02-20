@@ -37,6 +37,10 @@ func TestEquality(t *testing.T) {
 	if NewFranc(5, "CHF").Equals(NewFranc(6, "CHF")) {
 		t.Errorf("Equals error")
 	}
+
+	if !NewMoney(5, "CHF").Equals(NewFranc(5, "CHF")) {
+		t.Errorf("Equals error")
+	}
 }
 
 func TestFrancMultiplication(t *testing.T) {
