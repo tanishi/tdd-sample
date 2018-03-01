@@ -20,3 +20,17 @@ func (m *Money) Equals(obj interface{}) bool {
 func (m *Money) Times(multplier int) *Money {
 	return NewMoney(m.Amount*multplier, m.Currency)
 }
+
+func NewDollar(amount int) *Money {
+	return &Money{
+		Amount:   amount,
+		Currency: "USD",
+	}
+}
+
+func NewFranc(amount int) *Money {
+	return &Money{
+		Amount:   amount,
+		Currency: "CHF",
+	}
+}

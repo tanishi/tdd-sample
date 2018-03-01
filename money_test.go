@@ -6,15 +6,15 @@ import (
 )
 
 func TestMultiplication(t *testing.T) {
-	five := NewMoney(5, "USD")
+	five := NewDollar(5)
 
-	expected := NewMoney(10, "USD")
+	expected := NewDollar(10)
 
 	if !reflect.DeepEqual(five.Times(2), expected) {
 		t.Errorf("expected: %v, but: %v", expected, five.Times(2))
 	}
 
-	expected = NewMoney(15, "USD")
+	expected = NewDollar(15)
 
 	if !reflect.DeepEqual(five.Times(3), expected) {
 		t.Errorf("expected: %v, but: %v", expected, five.Times(3))
@@ -22,37 +22,37 @@ func TestMultiplication(t *testing.T) {
 }
 
 func TestEquality(t *testing.T) {
-	if !NewMoney(5, "USD").Equals(NewMoney(5, "USD")) {
+	if !NewDollar(5).Equals(NewDollar(5)) {
 		t.Errorf("Equals error")
 	}
 
-	if NewMoney(5, "USD").Equals(NewMoney(6, "USD")) {
+	if NewDollar(5).Equals(NewDollar(6)) {
 		t.Errorf("Equals error")
 	}
 
-	if !NewMoney(5, "CHF").Equals(NewMoney(5, "CHF")) {
+	if !NewFranc(5).Equals(NewFranc(5)) {
 		t.Errorf("Equals error")
 	}
 
-	if NewMoney(5, "CHF").Equals(NewMoney(6, "CHF")) {
+	if NewFranc(5).Equals(NewFranc(6)) {
 		t.Errorf("Equals error")
 	}
 
-	if !NewMoney(5, "CHF").Equals(NewMoney(5, "CHF")) {
+	if !NewFranc(5).Equals(NewFranc(5)) {
 		t.Errorf("Equals error")
 	}
 }
 
 func TestFrancMultiplication(t *testing.T) {
-	five := NewMoney(5, "CHF")
+	five := NewFranc(5)
 
-	expected := NewMoney(10, "CHF")
+	expected := NewFranc(10)
 
 	if !reflect.DeepEqual(five.Times(2), expected) {
 		t.Errorf("expected: %v, but: %v", expected, five.Times(2))
 	}
 
-	expected = NewMoney(15, "CHF")
+	expected = NewFranc(15)
 
 	if !reflect.DeepEqual(five.Times(3), expected) {
 		t.Errorf("expected: %v, but: %v", expected, five.Times(3))
@@ -60,11 +60,11 @@ func TestFrancMultiplication(t *testing.T) {
 }
 
 func TestCurrency(t *testing.T) {
-	if "USD" != NewMoney(1, "USD").Currency {
-		t.Errorf("expected: %v, but %v", "USD", NewMoney(1, "USD").Currency)
+	if "USD" != NewDollar(1).Currency {
+		t.Errorf("expected: %v, but %v", "USD", NewDollar(1).Currency)
 	}
 
-	if "CHF" != NewMoney(1, "CHF").Currency {
-		t.Errorf("expected: %v, but %v", "CHF", NewMoney(1, "CHF").Currency)
+	if "CHF" != NewFranc(1).Currency {
+		t.Errorf("expected: %v, but %v", "CHF", NewFranc(1).Currency)
 	}
 }
