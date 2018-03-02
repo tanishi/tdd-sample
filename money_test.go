@@ -21,6 +21,15 @@ func TestMultiplication(t *testing.T) {
 	}
 }
 
+func TestAddition(t *testing.T) {
+	expected := NewDollar(10)
+	actual := NewDollar(5).Plus(NewDollar(5))
+
+	if !reflect.DeepEqual(actual, expected) {
+		t.Errorf("expected: %v, but: %v", expected, actual)
+	}
+}
+
 func TestEquality(t *testing.T) {
 	if !NewDollar(5).Equals(NewDollar(5)) {
 		t.Errorf("Equals error")

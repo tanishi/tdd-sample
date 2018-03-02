@@ -17,6 +17,10 @@ func (m *Money) Equals(obj interface{}) bool {
 	return m.Amount == money.Amount && m.Currency == money.Currency
 }
 
+func (m *Money) Plus(addend *Money) *Money {
+	return NewMoney(m.Amount+addend.Amount, m.Currency)
+}
+
 func (m *Money) Times(multplier int) *Money {
 	return NewMoney(m.Amount*multplier, m.Currency)
 }
