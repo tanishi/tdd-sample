@@ -67,22 +67,6 @@ func TestEquality(t *testing.T) {
 	}
 }
 
-func TestFrancMultiplication(t *testing.T) {
-	five := NewFranc(5)
-
-	want := NewFranc(10)
-
-	if !reflect.DeepEqual(five.Times(2), want) {
-		t.Errorf("want: %v, but: %v", want, five.Times(2))
-	}
-
-	want = NewFranc(15)
-
-	if !reflect.DeepEqual(five.Times(3), want) {
-		t.Errorf("want: %v, but: %v", want, five.Times(3))
-	}
-}
-
 func TestCurrency(t *testing.T) {
 	if "USD" != NewDollar(1).Currency {
 		t.Errorf("want: %v, but %v", "USD", NewDollar(1).Currency)
