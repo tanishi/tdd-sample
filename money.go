@@ -26,15 +26,9 @@ func (m *Money) Times(multplier int) *Money {
 }
 
 func NewDollar(amount int) *Money {
-	return &Money{
-		Amount:   amount,
-		Currency: "USD",
-	}
+	return NewMoney(amount, "USD")
 }
 
 func NewFranc(amount int) *Money {
-	return &Money{
-		Amount:   amount,
-		Currency: "CHF",
-	}
+	return NewMoney(amount, "CHF")
 }
