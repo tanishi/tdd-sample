@@ -13,7 +13,12 @@ func NewMoney(amount int, currency string) *Money {
 }
 
 func (m *Money) Equals(obj interface{}) bool {
-	money := obj.(*Money)
+	money, ok := obj.(*Money)
+
+	if !ok {
+		return false
+	}
+
 	return m.Amount == money.Amount && m.Currency == money.Currency
 }
 
