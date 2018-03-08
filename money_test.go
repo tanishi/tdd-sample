@@ -31,13 +31,14 @@ func TestAddition(t *testing.T) {
 		want *Money
 	}{
 		{NewDollar(5), NewDollar(10)},
-		{NewDollar(7), NewDollar(12)},
 	}
 
 	five := NewDollar(5)
+	bank := NewBank()
 
 	for _, c := range cases {
-		got := five.Plus(c.in)
+		sum := five.Plus(c.in)
+		got := bank.Reduce(sum, "USD")
 
 		if !reflect.DeepEqual(c.want, got) {
 			t.Errorf("want: %v, but: %v", c.want, got)
@@ -82,5 +83,19 @@ func TestCurrency(t *testing.T) {
 		if c.want != got {
 			t.Errorf("want: %v, but %v", "USD", NewDollar(1).Currency)
 		}
+	}
+}
+
+func TestPlusReturnsSum(t *testing.T) {
+	five := NewDollar(5)
+	result := five.Plus(five)
+	sum := result.(*Sum)
+
+	if !reflect.DeepEqual(*five, sum.Augend) {
+		t.Errorf("want: %v, but %v", *five, sum.Augend)
+	}
+
+	if !reflect.DeepEqual(*five, sum.Addend) {
+		t.Errorf("want: %v, but %v", *five, sum.Addend)
 	}
 }
