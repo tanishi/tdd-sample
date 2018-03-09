@@ -1,6 +1,7 @@
 package main
 
 type Expression interface {
+	Reduce(string) *Money
 }
 
 type Bank struct {
@@ -10,6 +11,6 @@ func NewBank() *Bank {
 	return &Bank{}
 }
 
-func (b *Bank) Reduce(e Expression, s string) *Money {
-	return NewDollar(10)
+func (b *Bank) Reduce(source Expression, to string) *Money {
+	return source.Reduce(to)
 }

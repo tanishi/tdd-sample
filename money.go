@@ -30,6 +30,10 @@ func (m *Money) Times(multplier int) *Money {
 	return NewMoney(m.Amount*multplier, m.Currency)
 }
 
+func (m *Money) Reduce(to string) *Money {
+	return m
+}
+
 func NewDollar(amount int) *Money {
 	return NewMoney(amount, "USD")
 }

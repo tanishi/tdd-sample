@@ -99,3 +99,12 @@ func TestPlusReturnsSum(t *testing.T) {
 		t.Errorf("want: %v, but %v", *five, sum.Addend)
 	}
 }
+
+func TestReduceMoney(t *testing.T) {
+	bank := NewBank()
+	result := bank.Reduce(NewDollar(1), "USD")
+
+	if !reflect.DeepEqual(NewDollar(1), result) {
+		t.Errorf("want: %v, but %v", NewDollar(1), result)
+	}
+}
