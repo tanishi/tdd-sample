@@ -108,3 +108,15 @@ func TestReduceMoney(t *testing.T) {
 		t.Errorf("want: %v, but %v", NewDollar(1), result)
 	}
 }
+
+func TestReduceMoneyDifferentCurrency(t *testing.T) {
+	bank := NewBank()
+	bank.AddRate("CHF", "USD", 2)
+
+	want := NewDollar(1)
+	got := bank.Reduce(NewFranc(2), "USD")
+
+	if !reflect.DeepEqual(want, got) {
+		t.Errorf("want: %v, got: %v", want, got)
+	}
+}
