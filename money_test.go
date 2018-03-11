@@ -120,3 +120,12 @@ func TestReduceMoneyDifferentCurrency(t *testing.T) {
 		t.Errorf("want: %v, got: %v", want, got)
 	}
 }
+
+func TestIdentityRate(t *testing.T) {
+	want := 1
+	got := NewBank().Rate("USD", "USD")
+
+	if want != got {
+		t.Errorf("want: %v, got: %v", want, got)
+	}
+}

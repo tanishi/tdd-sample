@@ -5,10 +5,13 @@ type Expression interface {
 }
 
 type Bank struct {
+	rate map[Pair]int
 }
 
 func NewBank() *Bank {
-	return &Bank{}
+	return &Bank{
+		rate: make(map[Pair]int),
+	}
 }
 
 func (b *Bank) Reduce(source Expression, to string) *Money {
@@ -16,12 +19,12 @@ func (b *Bank) Reduce(source Expression, to string) *Money {
 }
 
 func (b *Bank) AddRate(from, to string, rate int) {
+	b.rate[*NewPair(from, to)] = rate
 }
 
 func (b *Bank) Rate(from, to string) int {
-	if from == "CHF" && to == "USD" {
-		return 2
+	if from == to {
+		return 1
 	}
-
-	return 1
+	return b.rate[*NewPair(from, to)]
 }
