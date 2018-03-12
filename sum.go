@@ -13,6 +13,6 @@ func NewSum(augend, addend Money) *Sum {
 }
 
 func (s *Sum) Reduce(b Bank, to string) *Money {
-	amount := s.Augend.Amount + s.Addend.Amount
+	amount := s.Augend.Reduce(b, to).Amount + s.Addend.Reduce(b, to).Amount
 	return NewMoney(amount, to)
 }

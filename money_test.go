@@ -129,3 +129,18 @@ func TestIdentityRate(t *testing.T) {
 		t.Errorf("want: %v, got: %v", want, got)
 	}
 }
+
+func TestMixAddition(t *testing.T) {
+	fiveBucks := NewDollar(5)
+	tenFrancs := NewFranc(10)
+
+	bank := NewBank()
+	bank.AddRate("CHF", "USD", 2)
+
+	want := *NewDollar(10)
+	got := *bank.Reduce(fiveBucks.Plus(tenFrancs), "USD")
+
+	if want != got {
+		t.Errorf("want: %v, got: %v", want, got)
+	}
+}
