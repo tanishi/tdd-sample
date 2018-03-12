@@ -47,24 +47,22 @@ func TestAddition(t *testing.T) {
 }
 
 func TestEquality(t *testing.T) {
-	if !NewDollar(5).Equals(NewDollar(5)) {
-		t.Errorf("Equals error")
+	cases := []struct {
+		lfs  *Money
+		rhs  *Money
+		want bool
+	}{
+		{NewDollar(5), NewDollar(5), true},
+		{NewDollar(5), NewDollar(6), false},
+		{NewFranc(5), NewFranc(5), true},
+		{NewFranc(5), NewFranc(6), false},
+		{NewDollar(5), NewFranc(5), false},
 	}
 
-	if NewDollar(5).Equals(NewDollar(6)) {
-		t.Errorf("Equals error")
-	}
-
-	if !NewFranc(5).Equals(NewFranc(5)) {
-		t.Errorf("Equals error")
-	}
-
-	if NewFranc(5).Equals(NewFranc(6)) {
-		t.Errorf("Equals error")
-	}
-
-	if !NewFranc(5).Equals(NewFranc(5)) {
-		t.Errorf("Equals error")
+	for _, c := range cases {
+		if c.lfs.Equals(c.rhs) != c.want {
+			t.Errorf("Equals error")
+		}
 	}
 }
 
