@@ -137,10 +137,10 @@ func TestMixAddition(t *testing.T) {
 	bank := NewBank()
 	bank.AddRate("CHF", "USD", 2)
 
-	want := *NewDollar(10)
-	got := *bank.Reduce(fiveBucks.Plus(tenFrancs), "USD")
+	want := NewDollar(10)
+	got := bank.Reduce(fiveBucks.Plus(tenFrancs), "USD")
 
-	if want != got {
+	if !reflect.DeepEqual(want, got) {
 		t.Errorf("want: %v, got: %v", want, got)
 	}
 }
