@@ -1,9 +1,5 @@
 package main
 
-type Expression interface {
-	Reduce(Bank, string) *Money
-}
-
 type Bank struct {
 	rate map[Pair]int
 }
