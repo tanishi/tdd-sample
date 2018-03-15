@@ -79,7 +79,7 @@ func TestCurrency(t *testing.T) {
 		got := c.in.Currency
 
 		if c.want != got {
-			t.Errorf("want: %v, but %v", "USD", NewDollar(1).Currency)
+			t.Errorf("want: %v, but %v", c.want, got)
 		}
 	}
 }
@@ -100,10 +100,12 @@ func TestPlusReturnsSum(t *testing.T) {
 
 func TestReduceMoney(t *testing.T) {
 	bank := NewBank()
-	result := bank.Reduce(NewDollar(1), "USD")
 
-	if !reflect.DeepEqual(NewDollar(1), result) {
-		t.Errorf("want: %v, but %v", NewDollar(1), result)
+	want := NewDollar(1)
+	got := bank.Reduce(NewDollar(1), "USD")
+
+	if !reflect.DeepEqual(want, got) {
+		t.Errorf("want: %v, got: %v", want, got)
 	}
 }
 
